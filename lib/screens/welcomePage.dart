@@ -1,4 +1,4 @@
-import 'package:darwishproject/screens/splashPage.dart';
+import 'package:darwishproject/screens/Q1screen.dart';
 import 'package:flutter/material.dart';
 
 class WelcomePage extends StatelessWidget {
@@ -17,7 +17,7 @@ class WelcomePage extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   image: DecorationImage(
-                    image: AssetImage("assets/first.jpg"),
+                    image: AssetImage("assets/first.webp"),
                     fit: BoxFit.fill,
                   ),
                 ),
@@ -25,13 +25,18 @@ class WelcomePage extends StatelessWidget {
               SizedBox(height: 24),
               Spacer(),
               Text(
-                "Small daily habits create big changes in your health.",
+                "Tell us about your health",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 24,
                   color: Colors.black87,
                   fontWeight: FontWeight.w500,
                 ),
+              ),
+              Text(
+                "Please answer a few questions so we can guide you better",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 14, color: Colors.black54),
               ),
               Spacer(),
               Padding(
@@ -47,7 +52,7 @@ class WelcomePage extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => SplashPage()),
+                      MaterialPageRoute(builder: (context) => Question1Page()),
                     );
                   },
 

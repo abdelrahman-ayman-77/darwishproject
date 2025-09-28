@@ -12,7 +12,7 @@ class FinalPage extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/fifth.jpg"),
+            image: AssetImage("assets/fifth.webp"),
             fit: BoxFit.cover,
           ),
         ),
