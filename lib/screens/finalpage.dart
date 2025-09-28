@@ -8,9 +8,9 @@ class FinalPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(24),
+        padding: const EdgeInsets.all(24),
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/fifth.webp"),
             fit: BoxFit.cover,
@@ -19,10 +19,9 @@ class FinalPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Spacer(),
-
-            SizedBox(height: 24),
-            Text(
+            const Spacer(),
+            const SizedBox(height: 24),
+            const Text(
               "Thank you for sharing your details!",
               style: TextStyle(
                 fontSize: 18,
@@ -31,25 +30,28 @@ class FinalPage extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 12),
-            Text(
+            const SizedBox(height: 12),
+            const Text(
               "Your health journey starts now.\nStay active, stay healthy.",
               style: TextStyle(fontSize: 14),
               textAlign: TextAlign.center,
             ),
-            Spacer(),
+            const Spacer(),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Color(0xFF5BB2AE),
+                backgroundColor: Colors.green,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 48, vertical: 16),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 48,
+                  vertical: 16,
+                ),
               ),
               onPressed: () {
                 SystemNavigator.pop();
               },
-              child: Text(
+              child: const Text(
                 "Exit",
                 style: TextStyle(fontSize: 18, color: Colors.black),
               ),

@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:darwishproject/models/usermodel.dart';
 import 'package:darwishproject/screens/finalpage.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 class Question3Page extends StatefulWidget {
   final String role, gender;
@@ -23,6 +24,8 @@ class _Question3PageState extends State<Question3Page> {
   final sugarController = TextEditingController();
   final heartRateController = TextEditingController();
   final bpController = TextEditingController();
+  bool isloading = false;
+  bool isabsorb = false;
 
   void _showError(String msg) {
     ScaffoldMessenger.of(
@@ -62,8 +65,13 @@ class _Question3PageState extends State<Question3Page> {
       bloodpressure: bp,
     );
     try {
+      isloading = true;
+      isabsorb = true;
+      setState(() {});
       await FirebaseFirestore.instance.collection("users").add(user.toJson());
-
+      isloading = false;
+      isabsorb = false;
+      setState(() {});
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => FinalPage()),
@@ -77,62 +85,68 @@ class _Question3PageState extends State<Question3Page> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Center(
-          child: SingleChildScrollView(
-            child: Padding(
-              padding: EdgeInsets.all(24),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("What is your blood sugar level?"),
-                  TextField(
-                    controller: sugarController,
-                    keyboardType: TextInputType.number,
-                    decoration: _blackInputDecoration("Enter value"),
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  SizedBox(height: 12),
+        child: AbsorbPointer(
+          absorbing: isabsorb,
+          child: ModalProgressHUD(
+            inAsyncCall: isloading,
+            child: Center(
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.all(24),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text("What is your blood sugar level?"),
+                      TextField(
+                        controller: sugarController,
+                        keyboardType: TextInputType.number,
+                        decoration: _blackInputDecoration("Enter value"),
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      const SizedBox(height: 12),
 
-                  Text("What is your heart rate (pulse)?"),
-                  TextField(
-                    controller: heartRateController,
-                    keyboardType: TextInputType.number,
-                    decoration: _blackInputDecoration("Enter value"),
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  SizedBox(height: 12),
+                      const Text("What is your heart rate (pulse)?"),
+                      TextField(
+                        controller: heartRateController,
+                        keyboardType: TextInputType.number,
+                        decoration: _blackInputDecoration("Enter value"),
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      const SizedBox(height: 12),
 
-                  Text("What is your blood pressure?"),
-                  TextField(
-                    controller: bpController,
-                    keyboardType: TextInputType.number,
-                    decoration: _blackInputDecoration("Enter value"),
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  SizedBox(height: 24),
+                      const Text("What is your blood pressure?"),
+                      TextField(
+                        controller: bpController,
+                        keyboardType: TextInputType.number,
+                        decoration: _blackInputDecoration("Enter value"),
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      const SizedBox(height: 24),
 
-                  Center(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12),
-                        ),
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 48,
-                          vertical: 16,
+                      Center(
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.green,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 48,
+                              vertical: 16,
+                            ),
+                          ),
+                          onPressed: _submit,
+                          child: const Text(
+                            "Submit",
+                            style: TextStyle(fontSize: 18, color: Colors.black),
+                          ),
                         ),
                       ),
-                      onPressed: _submit,
-                      child: Text(
-                        "Submit",
-                        style: TextStyle(fontSize: 18, color: Colors.black),
-                      ),
-                    ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ),
           ),

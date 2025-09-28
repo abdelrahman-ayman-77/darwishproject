@@ -20,12 +20,12 @@ class _Question1PageState extends State<Question1Page> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
+            const Text(
               "Which of these best describes you?",
               style: TextStyle(fontSize: 18, fontStyle: FontStyle.italic),
               textAlign: TextAlign.center,
             ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             ...options.map((option) {
               return Padding(
                 padding: EdgeInsets.symmetric(vertical: 8),
@@ -51,7 +51,7 @@ class _Question1PageState extends State<Question1Page> {
                 ),
               );
             }),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.green,
@@ -71,7 +71,7 @@ class _Question1PageState extends State<Question1Page> {
                         ),
                       );
                     },
-              child: Text(
+              child: const Text(
                 "Continue",
                 style: TextStyle(fontSize: 18, color: Colors.black),
               ),

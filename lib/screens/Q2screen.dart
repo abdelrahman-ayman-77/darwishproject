@@ -70,7 +70,7 @@ class _Question2PageState extends State<Question2Page> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Text(
+                  const Text(
                     "What is your gender?",
                     style: TextStyle(fontSize: 16, fontStyle: FontStyle.italic),
                   ),
@@ -92,8 +92,8 @@ class _Question2PageState extends State<Question2Page> {
                     },
                   ),
 
-                  SizedBox(height: 12),
-                  Text("What is your weight?"),
+                  const SizedBox(height: 12),
+                  const Text("What is your weight?"),
                   TextField(
                     controller: weightController,
                     keyboardType: TextInputType.number,
@@ -109,8 +109,8 @@ class _Question2PageState extends State<Question2Page> {
                     style: TextStyle(color: Colors.white),
                   ),
 
-                  SizedBox(height: 12),
-                  Text("What is your height?"),
+                  const SizedBox(height: 12),
+                  const Text("What is your height?"),
                   TextField(
                     controller: heightController,
                     keyboardType: TextInputType.number,
@@ -126,7 +126,7 @@ class _Question2PageState extends State<Question2Page> {
                     style: TextStyle(color: Colors.white),
                   ),
 
-                  SizedBox(height: 24),
+                  const SizedBox(height: 24),
                   Center(
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -140,7 +140,7 @@ class _Question2PageState extends State<Question2Page> {
                         ),
                       ),
                       onPressed: _continue,
-                      child: Text(
+                      child: const Text(
                         "Continue",
                         style: TextStyle(fontSize: 18, color: Colors.black),
                       ),
