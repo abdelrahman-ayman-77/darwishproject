@@ -10,11 +10,10 @@ class Question2Page extends StatefulWidget {
 }
 
 class _Question2PageState extends State<Question2Page> {
-  String? gender; // 🔹 nullable now (no default)
+  String? gender;
   final weightController = TextEditingController();
   final heightController = TextEditingController();
 
-  // simple function to show error messages
   void _showError(String msg) {
     ScaffoldMessenger.of(
       context,
@@ -22,25 +21,21 @@ class _Question2PageState extends State<Question2Page> {
   }
 
   void _continue() {
-    // validate gender
     if (gender == null) {
       _showError("Please select your gender.");
       return;
     }
 
-    // validate weight
     if (weightController.text.trim().isEmpty) {
       _showError("Please enter your weight.");
       return;
     }
 
-    // validate height
     if (heightController.text.trim().isEmpty) {
       _showError("Please enter your height.");
       return;
     }
 
-    // try parsing number safely
     double? weight = double.tryParse(weightController.text.trim());
     double? height = double.tryParse(heightController.text.trim());
 
@@ -49,12 +44,10 @@ class _Question2PageState extends State<Question2Page> {
       return;
     }
 
-    // ✅ All good -> navigate to Question 3
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) => Question3Page(
-          // optionally pass collected data forward
           role: widget.role,
           gender: gender!,
           weight: weight,
@@ -69,16 +62,13 @@ class _Question2PageState extends State<Question2Page> {
     return Scaffold(
       body: SafeArea(
         child: Center(
-          // ✅ Center everything
           child: SingleChildScrollView(
-            // ✅ Prevents keyboard overflow
             child: Padding(
               padding: EdgeInsets.all(24),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center, // still centered
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize:
-                    MainAxisSize.min, // ✅ Important (don't take full height)
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     "What is your gender?",
@@ -150,7 +140,10 @@ class _Question2PageState extends State<Question2Page> {
                         ),
                       ),
                       onPressed: _continue,
-                      child: Text("Continue", style: TextStyle(fontSize: 18)),
+                      child: Text(
+                        "Continue",
+                        style: TextStyle(fontSize: 18, color: Colors.black),
+                      ),
                     ),
                   ),
                 ],

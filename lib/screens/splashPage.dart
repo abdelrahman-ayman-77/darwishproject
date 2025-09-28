@@ -11,7 +11,7 @@ class SplashPage extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("assets/second.jpg"), // Replace
+            image: AssetImage("assets/second.jpg"),
             fit: BoxFit.cover,
           ),
         ),
@@ -43,7 +43,10 @@ class SplashPage extends StatelessWidget {
                   MaterialPageRoute(builder: (context) => Question1Page()),
                 );
               },
-              child: Text("Start", style: TextStyle(fontSize: 18)),
+              child: Text(
+                "Start",
+                style: TextStyle(fontSize: 18, color: Colors.black),
+              ),
             ),
           ],
         ),

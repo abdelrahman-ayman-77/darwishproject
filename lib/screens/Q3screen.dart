@@ -44,7 +44,6 @@ class _Question3PageState extends State<Question3Page> {
       return;
     }
 
-    // Try to parse numbers
     double? sugar = double.tryParse(sugarController.text.trim());
     double? heartRate = double.tryParse(heartRateController.text.trim());
     double? bp = double.tryParse(bpController.text.trim());
@@ -63,10 +62,8 @@ class _Question3PageState extends State<Question3Page> {
       bloodpressure: bp,
     );
     try {
-      // ✅ Save to Firestore under "users" collection
-      await FirebaseFirestore.instance.collection("users").add(user.toMap());
+      await FirebaseFirestore.instance.collection("users").add(user.toJson());
 
-      // ✅ Navigate forward only if save succeeded
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => FinalPage()),
@@ -129,7 +126,10 @@ class _Question3PageState extends State<Question3Page> {
                         ),
                       ),
                       onPressed: _submit,
-                      child: Text("Submit", style: TextStyle(fontSize: 18)),
+                      child: Text(
+                        "Submit",
+                        style: TextStyle(fontSize: 18, color: Colors.black),
+                      ),
                     ),
                   ),
                 ],

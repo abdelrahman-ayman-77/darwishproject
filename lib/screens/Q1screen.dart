@@ -71,7 +71,10 @@ class _Question1PageState extends State<Question1Page> {
                         ),
                       );
                     },
-              child: Text("Continue", style: TextStyle(fontSize: 18)),
+              child: Text(
+                "Continue",
+                style: TextStyle(fontSize: 18, color: Colors.black),
+              ),
             ),
           ],
         ),

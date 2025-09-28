@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class FinalPage extends StatelessWidget {
   const FinalPage({super.key});
@@ -8,19 +9,18 @@ class FinalPage extends StatelessWidget {
     return Scaffold(
       body: Container(
         padding: EdgeInsets.all(24),
+        width: double.infinity,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/fifth.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Spacer(),
-            Container(
-              height: 300,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/third.jpg"), // Replace
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
+
             SizedBox(height: 24),
             Text(
               "Thank you for sharing your details!",
@@ -40,16 +40,19 @@ class FinalPage extends StatelessWidget {
             Spacer(),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
+                backgroundColor: Color(0xFF5BB2AE),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(12),
                 ),
                 padding: EdgeInsets.symmetric(horizontal: 48, vertical: 16),
               ),
               onPressed: () {
-                Navigator.popUntil(context, (route) => route.isFirst);
+                SystemNavigator.pop();
               },
-              child: Text("Exit", style: TextStyle(fontSize: 18)),
+              child: Text(
+                "Exit",
+                style: TextStyle(fontSize: 18, color: Colors.black),
+              ),
             ),
           ],
         ),

@@ -18,7 +18,7 @@ class Usermodel {
     required this.bloodpressure,
   });
 
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toJson() {
     return {
       "role": role,
       "gender": gender,
